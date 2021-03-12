@@ -1,11 +1,23 @@
 .array-container {
-  position: absolute;
-  /* left: 100px; */
-  /* top: 100px; */
+  /* position: absolute; */
+  left: 100px;
+  /* top: 50px;
+  bottom: 50px; */
 }
 
 .array-bar {
   width: 30px;
   display: inline-block;
-  margin: 5px 1px;
+  margin: 5px 2px;
+}
+.array-value {
+}
+.btn {
+  font-size: 1rem;
+  margin: 0 20px;
+}
+.btn:hover {
+  background-color: turquoise;
+}
+.btn-block {
 }
