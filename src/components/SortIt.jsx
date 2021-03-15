@@ -3,6 +3,7 @@ import { getMergeSortAnimations } from "../components/sortingAlgorithms";
 import { bubbleSortAnimations } from "../components/sortingAlgorithms";
 import { selectionSortAnimations } from "../components/sortingAlgorithms";
 import { insertionSortAnimations } from "../components/sortingAlgorithms";
+import { mergeSortAnimations } from "../components/sortingAlgorithms";
 import "./SortIt.css";
 
 // Change this value for the speed of the animations.
@@ -35,7 +36,7 @@ const SortIt = () => {
       bars.push(randomIntFromInterval(5, 500));
     }
     setArray(bars);
-    // setArray([500, 450, 400, 350, 300, 250, 200, 100]);
+    //setArray([500, 150, 400, 350, 300, 250, 200, 100]);
     // setArray([100, 200, 300, 400, 500]);
     //setArray([80, 20, 40, 10, 30]);
   };
@@ -50,6 +51,10 @@ const SortIt = () => {
   const insertionSort = () => {
     const animations = insertionSortAnimations(array);
     console.log("insertion", animations);
+  };
+  const mergeSort = () => {
+    const animations = mergeSortAnimations(array);
+    console.log("merge", animations);
   };
 
   return (
@@ -70,7 +75,7 @@ const SortIt = () => {
         <button className="btn" onClick={() => resetArray()}>
           Generate New Array
         </button>
-        <button className="btn" onClick={() => this.mergeSort()}>
+        <button className="btn" onClick={() => mergeSort()}>
           Merge Sort
         </button>
         <button className="btn" onClick={() => insertionSort()}>
