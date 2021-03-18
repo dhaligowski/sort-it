@@ -3,6 +3,7 @@
 }
 
 .array-bar {
+  /* chage the width to alter bar */
   width: 25px;
   display: inline-block;
   margin: 5px 2px;

@@ -8,17 +8,7 @@ import colors from "../config/colors";
 import constants from "../config/constants";
 import "./SortIt.css";
 
-// Change this value for the speed of the animations.
-//const ANIMATION_SPEED_MS = 1;
-
-// Change this value for the number of bars (value) in the array.
-//const NUMBER_OF_ARRAY_BARS = 45;
-
-// This is the main color of the array bars.
-//const PRIMARY_COLOR = "turquoise";
-
-// This is the color of array bars that are being compared throughout the animations.
-//const SECONDARY_COLOR = "red";
+// Inspired by project at https://github.com/clementmihailescu/Sorting-Visualizer-Tutorial
 
 const SortIt = () => {
   const [array, setArray] = useState([]);
@@ -27,6 +17,7 @@ const SortIt = () => {
     resetArray();
   }, []);
 
+  // From https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
   function randomIntFromInterval(min, max) {
     // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min);
