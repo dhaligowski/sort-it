@@ -1,7 +1,6 @@
 import "./SortIt.css";
 import colors from "../config/colors";
 import constants from "../config/constants";
-import { render } from "@testing-library/react";
 
 export const bubbleSortAnimations = (array) => {
   let renderCounter = 0; //counter to make animation smooth
@@ -37,6 +36,7 @@ function animateCompare(index1, index2, i) {
     arrayBars[index2].style.backgroundColor = colors.secondary;
   }, i * constants.ANIMATION_SPEED_MS);
 }
+
 function animateCompareEnd(index1, index2, i) {
   const arrayBars = document.getElementsByClassName("array-bar");
   setTimeout(() => {
@@ -44,6 +44,7 @@ function animateCompareEnd(index1, index2, i) {
     arrayBars[index2].style.backgroundColor = colors.primary;
   }, i * constants.ANIMATION_SPEED_MS);
 }
+
 function swap(array, index1, index2, i) {
   var temp = array[index1];
   array[index1] = array[index2];
@@ -177,9 +178,6 @@ function partition(array, left, right) {
 }
 
 function merge(array, startIndex, middle, endIndex, renderCounter) {
-  console.log("RCV", renderCounter);
-  //let renderCounter = 0;
-  //let renderCounter = { value: 0 };
   let tmp = [];
   let len = middle - startIndex;
   let i, j, k;
@@ -187,10 +185,6 @@ function merge(array, startIndex, middle, endIndex, renderCounter) {
   for (i = 0; i < len; i++) {
     // animate this move
     tmp[i] = array[startIndex + i];
-    // console.log("from array[startIndex +i]", i, array[startIndex + i]);
-    // console.log("to tmp[i]", i, tmp[i]);
-    // renderCounter++;
-    // animateSwap(i, i, renderCounter);
   }
   // merge subarrays
   i = 0;
@@ -200,57 +194,33 @@ function merge(array, startIndex, middle, endIndex, renderCounter) {
     if (tmp[i] <= array[j]) {
       // animate this move
       renderCounter.value++;
-      console.log("renderCounter", renderCounter);
       animateMergeCompare(k, renderCounter.value);
-      // renderCounter++;
-      // animateMergeCompareEnd(k, k, i);
       renderCounter.value++;
-      console.log("renderCounter", renderCounter);
       animateMerge(k, tmp[i], renderCounter.value);
       renderCounter.value++;
-      console.log("renderCounter", renderCounter);
       animateMergeCompareEnd(k, renderCounter.value);
-
       array[k++] = tmp[i++];
-      //console.log("from tmp[i]", i - 1, tmp[i - 1]);
-      //console.log("to array[a]", k - 1, array[k - 1]);
-      // renderCounter++;
-      // animateSwap(k - 1, k - 1, renderCounter);
     } else {
       // animate this move
       renderCounter.value++;
-      console.log("renderCounter", renderCounter);
       animateMergeCompare(k, renderCounter.value);
       renderCounter.value++;
-      console.log("renderCounter", renderCounter);
       animateMerge(k, array[j], renderCounter.value);
       renderCounter.value++;
-      console.log("renderCounter", renderCounter);
       animateMergeCompareEnd(k, renderCounter.value);
       array[k++] = array[j++];
-      //console.log("from array[j]", j - 1, array[j - 1]);
-      //console.log("to array[k]", k - 1, array[k - 1]);
-      // renderCounter++;
-      // animateSwap(k - 1, k - 1, renderCounter);
     }
   }
   // copy the remaining elements
   while (i < len) {
     // animate this move
     renderCounter.value++;
-    console.log("renderCounter", renderCounter);
     animateMergeCompare(k, renderCounter.value);
     renderCounter.value++;
-    console.log("renderCounter", renderCounter);
     animateMerge(k, tmp[i], renderCounter.value);
     renderCounter.value++;
-    console.log("renderCounter", renderCounter);
     animateMergeCompareEnd(k, renderCounter.value);
     array[k++] = tmp[i++];
-    // console.log("from tmp[i]", i - 1, tmp[i - 1]);
-    // console.log(" to array[k]", k - 1, array[k - 1]);
-    // renderCounter++;
-    // animateSwap(k - 1, k - 1, renderCounter);
   }
   return array;
 }
@@ -261,17 +231,9 @@ export const mergeSortAnimations = (
   endIndex,
   renderCounter
 ) => {
-  //console.log("RCV", renderCounter);
-  //let  renderCounter=0;
-  //let renderCounter = { value: 0 };
   if (endIndex - startIndex > 1) {
-    //var m = lo + ((hi - lo) >> 1);
     let middle = Math.floor((startIndex + endIndex) / 2);
-    //let middle = startIndex + ((endIndex - startIndex) >> 1);
-    //console.log("startIndex, endIndex, middle", startIndex, endIndex, middle);
     mergeSortAnimations(array, startIndex, middle, renderCounter);
-    //console.log("on to left call");
-    //console.log("startIndex, endIndex, middle", startIndex, endIndex, middle);
     mergeSortAnimations(array, middle, endIndex, renderCounter);
     merge(array, startIndex, middle, endIndex, renderCounter);
   }
@@ -285,26 +247,19 @@ function animateMerge(index1, value, renderCounter) {
   setTimeout(() => {
     arrayValue[index1].innerHTML = value;
     arrayBars[index1].style.height = `${value}px`;
-    //arrayBars[index1].style.backgroundColor = colors.secondary;
   }, renderCounter * constants.ANIMATION_SPEED_MS);
-  // setTimeout(() => {
-  //   console.log("value Before", arrayValue[index1].innerHTML);
-  //   arrayValue[index1].innerHTML = value;
-  //   console.log("value after", arrayValue[index1].innerHTML);
-  //   arrayBars[index1].style.height = value;
-  // }, renderCounter * constants.ANIMATION_SPEED_MS);
 }
+
 function animateMergeCompare(index1, i) {
   const arrayBars = document.getElementsByClassName("array-bar");
   setTimeout(() => {
     arrayBars[index1].style.backgroundColor = colors.secondary;
-    //arrayBars[index2].style.backgroundColor = colors.secondary;
   }, i * constants.ANIMATION_SPEED_MS);
 }
+
 function animateMergeCompareEnd(index1, i) {
   const arrayBars = document.getElementsByClassName("array-bar");
   setTimeout(() => {
     arrayBars[index1].style.backgroundColor = colors.primary;
-    //arrayBars[index2].style.backgroundColor = colors.primary;
   }, i * constants.ANIMATION_SPEED_MS);
 }
