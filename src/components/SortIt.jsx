@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { bubbleSortAnimations } from "../components/sortingAlgorithms";
 import { selectionSortAnimations } from "../components/sortingAlgorithms";
 import { insertionSortAnimations } from "../components/sortingAlgorithms";
-import { quickSortAnimations } from "../components/sortingAlgorithms";
+//import { quickSortAnimations } from "../components/sortingAlgorithms";
 import { mergeSortAnimations } from "../components/sortingAlgorithms";
 import colors from "../config/colors";
 import constants from "../config/constants";
