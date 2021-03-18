@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { getMergeSortAnimations } from "../components/sortingAlgorithms";
 import { bubbleSortAnimations } from "../components/sortingAlgorithms";
 import { selectionSortAnimations } from "../components/sortingAlgorithms";
 import { insertionSortAnimations } from "../components/sortingAlgorithms";
+import { quickSortAnimations } from "../components/sortingAlgorithms";
 import { mergeSortAnimations } from "../components/sortingAlgorithms";
+import colors from "../config/colors";
+import constants from "../config/constants";
 import "./SortIt.css";
 
 // Change this value for the speed of the animations.
-const ANIMATION_SPEED_MS = 1;
+//const ANIMATION_SPEED_MS = 1;
 
 // Change this value for the number of bars (value) in the array.
-const NUMBER_OF_ARRAY_BARS = 42;
+//const NUMBER_OF_ARRAY_BARS = 45;
 
 // This is the main color of the array bars.
-const PRIMARY_COLOR = "turquoise";
+//const PRIMARY_COLOR = "turquoise";
 
 // This is the color of array bars that are being compared throughout the animations.
-const SECONDARY_COLOR = "red";
+//const SECONDARY_COLOR = "red";
 
 const SortIt = () => {
   const [array, setArray] = useState([]);
@@ -32,12 +34,12 @@ const SortIt = () => {
 
   const resetArray = () => {
     const bars = [];
-    for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
-      bars.push(randomIntFromInterval(5, 500));
+    for (let i = 0; i < constants.NUMBER_OF_ARRAY_BARS; i++) {
+      bars.push(randomIntFromInterval(1, 500));
     }
     setArray(bars);
-    //setArray([500, 150, 400, 350, 300, 250, 200, 100]);
-    // setArray([100, 200, 300, 400, 500]);
+    //setArray([500, 400, 350, 300, 250, 200, 100]);
+    //setArray([100, 50, 300, 400, 500]);
     //setArray([80, 20, 40, 10, 30]);
   };
 
@@ -52,9 +54,37 @@ const SortIt = () => {
     const animations = insertionSortAnimations(array);
     console.log("insertion", animations);
   };
+  const quickSort = () => {
+    const animations = quickSortAnimations(array, 0, array.length - 1);
+    console.log("quick", animations);
+  };
+  // const mergeSort = () => {
+  //   const animations = mergeSortAnimations(array);
+  //   console.log("merge", animations);
+  // };
+  // const mergeSort2 = () => {
+  //   let mid = Math.floor(array.length / 2);
+  //   let originalArray = array.slice(0);
+  //   const animations = mergeSortAnimations2(array, originalArray, 1, 5);
+
+  //   console.log("merge2", animations);
+  //   // console.log("OG array", originalArray);
+  // };
   const mergeSort = () => {
-    const animations = mergeSortAnimations(array);
+    //let renderCounter = 0;
+    let renderCounter = { value: 0 };
+
+    let mid = Math.floor(array.length / 2);
+    let originalArray = array.slice(0);
+    const animations = mergeSortAnimations(
+      array,
+      0,
+      array.length,
+      renderCounter
+    );
+
     console.log("merge", animations);
+    // console.log("OG array", originalArray);
   };
 
   return (
@@ -64,20 +94,20 @@ const SortIt = () => {
           className="array-bar"
           key={idx}
           style={{
-            backgroundColor: PRIMARY_COLOR,
+            backgroundColor: colors.primary,
             height: `${value}px`,
           }}
         >
-          <h4 className="array-value">{value}</h4>
+          <h5 className="array-value">{value}</h5>
         </div>
       ))}
       <div className="btn-block">
         <button className="btn" onClick={() => resetArray()}>
           Generate New Array
         </button>
-        <button className="btn" onClick={() => mergeSort()}>
-          Merge Sort
-        </button>
+        {/* <button className="btn" onClick={() => quickSort()}>
+          Quick Sort
+        </button> */}
         <button className="btn" onClick={() => insertionSort()}>
           Insertion Sort
         </button>
@@ -86,6 +116,15 @@ const SortIt = () => {
         </button>
         <button className="btn" onClick={() => bubbleSort()}>
           Bubble Sort
+        </button>
+        {/* <button className="btn" onClick={() => mergeSort()}>
+          Merge Sort
+        </button>
+        <button className="btn" onClick={() => mergeSort2()}>
+          Merge Sort2
+        </button> */}
+        <button className="btn" onClick={() => mergeSort()}>
+          Merge Sort
         </button>
       </div>
     </div>

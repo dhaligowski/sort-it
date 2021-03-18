@@ -1,23 +1,23 @@
 .array-container {
-  /* position: absolute; */
-  left: 100px;
-  /* top: 50px;
-  bottom: 50px; */
+  padding: 20px 0;
 }
 
 .array-bar {
-  width: 30px;
+  width: 25px;
   display: inline-block;
   margin: 5px 2px;
 }
 .array-value {
+  font-weight: bold;
 }
 .btn {
   font-size: 1rem;
-  margin: 0 20px;
+  margin: 50px 20px 0;
+  outline: 1px solid black;
 }
 .btn:hover {
-  background-color: turquoise;
+  /* // background-color: turquoise; */
+  background-color: #61dafb;
 }
 .btn-block {
 }
