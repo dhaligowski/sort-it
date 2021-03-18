@@ -1,5 +1,5 @@
 .array-container {
-  padding: 20px 0;
+  padding: 3px 0;
 }
 
 .array-bar {
@@ -16,8 +16,5 @@
   outline: 1px solid black;
 }
 .btn:hover {
-  /* // background-color: turquoise; */
   background-color: #61dafb;
-}
-.btn-block {
 }

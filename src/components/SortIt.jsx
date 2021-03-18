@@ -32,6 +32,10 @@ const SortIt = () => {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
+  const refreshPage = () => {
+    window.location.reload();
+  };
+
   const resetArray = () => {
     const bars = [];
     for (let i = 0; i < constants.NUMBER_OF_ARRAY_BARS; i++) {
@@ -101,7 +105,11 @@ const SortIt = () => {
           <h5 className="array-value">{value}</h5>
         </div>
       ))}
+
       <div className="btn-block">
+        <button className="btn" onClick={() => refreshPage()}>
+          Refresh Page
+        </button>
         <button className="btn" onClick={() => resetArray()}>
           Generate New Array
         </button>
