@@ -40,6 +40,7 @@ const SortIt = () => {
 
   const bubbleSort = () => {
     const animations = bubbleSortAnimations(array);
+    console.log("bubbleSort", animations);
   };
   const selectionSort = () => {
     const animations = selectionSortAnimations(array);
@@ -49,10 +50,10 @@ const SortIt = () => {
     const animations = insertionSortAnimations(array);
     console.log("insertion", animations);
   };
-  const quickSort = () => {
-    const animations = quickSortAnimations(array, 0, array.length - 1);
-    console.log("quick", animations);
-  };
+  // const quickSort = () => {
+  //   const animations = quickSortAnimations(array, 0, array.length - 1);
+  //   console.log("quick", animations);
+  // };
   // const mergeSort = () => {
   //   const animations = mergeSortAnimations(array);
   //   console.log("merge", animations);
@@ -69,8 +70,6 @@ const SortIt = () => {
     //let renderCounter = 0;
     let renderCounter = { value: 0 };
 
-    let mid = Math.floor(array.length / 2);
-    let originalArray = array.slice(0);
     const animations = mergeSortAnimations(
       array,
       0,
