@@ -12,9 +12,24 @@ import "./SortIt.css";
 
 const SortIt = () => {
   const [array, setArray] = useState([]);
+  //const [bars, setBars] = useState([]);
 
   useEffect(() => {
-    resetArray();
+    //const resetArray = () => {
+    const bars = [];
+    for (let i = 0; i < constants.NUMBER_OF_ARRAY_BARS; i++) {
+      bars.push(randomIntFromInterval(1, 500));
+    }
+    setArray(bars);
+    //   //setArray([500, 400, 350, 300, 250, 200, 100]);
+    //   //setArray([100, 50, 300, 400, 500]);
+    //   //setArray([80, 20, 40, 10, 30]);
+    //   //setBars(bars);
+
+    //   //   //setArray(resetArray());
+    //   //   //setBars(resetArray());
+    //   //   //setArray(bars);
+    //   //   //resetArray();
   }, []);
 
   // From https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
@@ -36,6 +51,7 @@ const SortIt = () => {
     //setArray([500, 400, 350, 300, 250, 200, 100]);
     //setArray([100, 50, 300, 400, 500]);
     //setArray([80, 20, 40, 10, 30]);
+    //setBars(bars);
   };
 
   const bubbleSort = () => {
