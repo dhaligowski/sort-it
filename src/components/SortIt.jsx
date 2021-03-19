@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import { bubbleSortAnimations } from "../components/sortingAlgorithms";
 import { selectionSortAnimations } from "../components/sortingAlgorithms";
 import { insertionSortAnimations } from "../components/sortingAlgorithms";
@@ -12,42 +13,68 @@ import "./SortIt.css";
 
 const SortIt = () => {
   const [array, setArray] = useState([]);
-  //const [bars, setBars] = useState([]);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
+  //////////////incorporates response to changes in window width///////////
   useEffect(() => {
     window.addEventListener("resize", handleResize);
   }, []);
 
   const handleResize = () => {
     setWindowWidth(window.innerWidth);
-    //console.log("windowWidth", window.innerWidth);
   };
 
   useEffect(() => {
-    //const resetArray = () => {
-    //setWindowWidth(window.innerWidth);
-    console.log("WindowWidth", windowWidth);
     const bars = [];
     for (
       let i = 0;
-      i < window.innerWidth / constants.NUMBER_OF_ARRAY_BARS - 1;
+      i <
+      window.innerWidth / constants.NUMBER_OF_ARRAY_BARS -
+        constants.OVERFLOW_BARS;
       i++
     ) {
-      //for (let i = 0; i < constants.NUMBER_OF_ARRAY_BARS; i++) {
-      bars.push(randomIntFromInterval(1, 500));
+      bars.push(
+        randomIntFromInterval(constants.RANGE_BEGIN, constants.RANGE_END)
+      );
     }
     setArray(bars);
-    //   //setArray([500, 400, 350, 300, 250, 200, 100]);
-    //   //setArray([100, 50, 300, 400, 500]);
-    //   //setArray([80, 20, 40, 10, 30]);
-    //   //setBars(bars);
-
-    //   //   //setArray(resetArray());
-    //   //   //setBars(resetArray());
-    //   //   //setArray(bars);
-    //   //   //resetArray();
   }, [windowWidth]);
+
+  const resetArray = () => {
+    const bars = [];
+    for (
+      let i = 0;
+      i <
+      window.innerWidth / constants.NUMBER_OF_ARRAY_BARS -
+        constants.OVERFLOW_BARS;
+      i++
+    ) {
+      bars.push(
+        randomIntFromInterval(constants.RANGE_BEGIN, constants.RANGE_END)
+      );
+    }
+    setArray(bars);
+  };
+  //////////////////////////////////////////////////////////////////////////
+
+  /////////////// no window width response/////////////////////////
+  // useEffect(() => {
+  //   //resetArray();
+  //   const bars = [];
+  //   for (let i = 0; i < constants.NUMBER_OF_ARRAY_BARS; i++) {
+  //     bars.push(randomIntFromInterval(1, 500));
+  //   }
+  //   setArray(bars);
+  // }, []);
+
+  // const resetArray = () => {
+  //   const bars = [];
+  //   for (let i = 0; i < constants.NUMBER_OF_ARRAY_BARS; i++) {
+  //     bars.push(randomIntFromInterval(1, 500));
+  //   }
+  //   setArray(bars);
+  // };
+  ///////////////////////////////////////////////////////////////////////////////////////////
 
   // From https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
   function randomIntFromInterval(min, max) {
@@ -57,23 +84,6 @@ const SortIt = () => {
 
   const refreshPage = () => {
     window.location.reload();
-  };
-
-  const resetArray = () => {
-    const bars = [];
-    for (
-      let i = 0;
-      i < window.innerWidth / constants.NUMBER_OF_ARRAY_BARS - 1;
-      i++
-    ) {
-      //for (let i = 0; i < constants.NUMBER_OF_ARRAY_BARS; i++) {
-      bars.push(randomIntFromInterval(1, 500));
-    }
-    setArray(bars);
-    //setArray([500, 400, 350, 300, 250, 200, 100]);
-    //setArray([100, 50, 300, 400, 500]);
-    //setArray([80, 20, 40, 10, 30]);
-    //setBars(bars);
   };
 
   const bubbleSort = () => {
@@ -92,20 +102,8 @@ const SortIt = () => {
   //   const animations = quickSortAnimations(array, 0, array.length - 1);
   //   console.log("quick", animations);
   // };
-  // const mergeSort = () => {
-  //   const animations = mergeSortAnimations(array);
-  //   console.log("merge", animations);
-  // };
-  // const mergeSort2 = () => {
-  //   let mid = Math.floor(array.length / 2);
-  //   let originalArray = array.slice(0);
-  //   const animations = mergeSortAnimations2(array, originalArray, 1, 5);
 
-  //   console.log("merge2", animations);
-  //   // console.log("OG array", originalArray);
-  // };
   const mergeSort = () => {
-    //let renderCounter = 0;
     let renderCounter = { value: 0 };
 
     const animations = mergeSortAnimations(
@@ -116,24 +114,24 @@ const SortIt = () => {
     );
 
     console.log("merge", animations);
-    // console.log("OG array", originalArray);
   };
 
   return (
     <div className="array-container">
-      {array.map((value, idx) => (
-        <div
-          className="array-bar"
-          key={idx}
-          style={{
-            backgroundColor: colors.primary,
-            height: `${value}px`,
-          }}
-        >
-          <h5 className="array-value">{value}</h5>
-        </div>
-      ))}
-
+      <div className="array-block">
+        {array.map((value, idx) => (
+          <div
+            className="array-bar"
+            key={idx}
+            style={{
+              backgroundColor: colors.primary,
+              height: `${value}px`,
+            }}
+          >
+            <h5 className="array-value">{value}</h5>
+          </div>
+        ))}
+      </div>
       <div className="btn-block">
         <button className="btn" onClick={() => refreshPage()}>
           Refresh Page
@@ -153,12 +151,6 @@ const SortIt = () => {
         <button className="btn" onClick={() => bubbleSort()}>
           Bubble Sort
         </button>
-        {/* <button className="btn" onClick={() => mergeSort()}>
-          Merge Sort
-        </button>
-        <button className="btn" onClick={() => mergeSort2()}>
-          Merge Sort2
-        </button> */}
         <button className="btn" onClick={() => mergeSort()}>
           Merge Sort
         </button>
