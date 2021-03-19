@@ -13,11 +13,28 @@ import "./SortIt.css";
 const SortIt = () => {
   const [array, setArray] = useState([]);
   //const [bars, setBars] = useState([]);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+  }, []);
+
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+    //console.log("windowWidth", window.innerWidth);
+  };
 
   useEffect(() => {
     //const resetArray = () => {
+    //setWindowWidth(window.innerWidth);
+    console.log("WindowWidth", windowWidth);
     const bars = [];
-    for (let i = 0; i < constants.NUMBER_OF_ARRAY_BARS; i++) {
+    for (
+      let i = 0;
+      i < window.innerWidth / constants.NUMBER_OF_ARRAY_BARS - 1;
+      i++
+    ) {
+      //for (let i = 0; i < constants.NUMBER_OF_ARRAY_BARS; i++) {
       bars.push(randomIntFromInterval(1, 500));
     }
     setArray(bars);
@@ -30,7 +47,7 @@ const SortIt = () => {
     //   //   //setBars(resetArray());
     //   //   //setArray(bars);
     //   //   //resetArray();
-  }, []);
+  }, [windowWidth]);
 
   // From https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
   function randomIntFromInterval(min, max) {
@@ -44,7 +61,12 @@ const SortIt = () => {
 
   const resetArray = () => {
     const bars = [];
-    for (let i = 0; i < constants.NUMBER_OF_ARRAY_BARS; i++) {
+    for (
+      let i = 0;
+      i < window.innerWidth / constants.NUMBER_OF_ARRAY_BARS - 1;
+      i++
+    ) {
+      //for (let i = 0; i < constants.NUMBER_OF_ARRAY_BARS; i++) {
       bars.push(randomIntFromInterval(1, 500));
     }
     setArray(bars);
@@ -142,6 +164,7 @@ const SortIt = () => {
         </button>
       </div>
     </div>
+
     // <div>
     //   <h1>Hello World</h1>
     // </div>

@@ -1,5 +1,5 @@
 .array-container {
-  padding: 3px 0;
+  /* padding: 3px 0; */
 }
 
 .array-bar {
@@ -13,7 +13,7 @@
 }
 .btn {
   font-size: 1rem;
-  margin: 50px 20px 0;
+  margin: 25px 20px 0;
   outline: 1px solid black;
 }
 .btn:hover {
