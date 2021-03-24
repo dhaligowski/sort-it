@@ -141,40 +141,48 @@ function animateShift(index1, index2, i) {
   }, i * constants.ANIMATION_SPEED_MS);
 }
 
-export const quickSortAnimations = (array, left, right) => {
-  var index;
-  if (array.length > 1) {
-    index = partition(array, left, right); //index returned from partition
-    if (left < index - 1) {
-      //more elements on the left side of the pivot
-      quickSortAnimations(array, left, index - 1);
-    }
-    if (index < right) {
-      //more elements on the right side of the pivot
-      quickSortAnimations(array, index, right);
-    }
-  }
+export const quickSortAnimations = (array, start, end, renderCounter) => {
+  if (start >= end) return array;
+
+  let boundary = partition(array, start, end, renderCounter);
+
+  quickSortAnimations(array, start, boundary - 1, renderCounter);
+  quickSortAnimations(array, boundary + 1, end, renderCounter);
   return array;
 };
 
-function partition(array, left, right) {
-  var pivot = array[Math.floor((right + left) / 2)], //middle element
-    i = left, //left pointer
-    j = right; //right pointer
-  while (i <= j) {
-    while (array[i] < pivot) {
-      i++;
-    }
-    while (array[j] > pivot) {
-      j--;
-    }
-    if (i <= j) {
-      swap(array, i, j); //sawpping two elements
-      i++;
-      j--;
+function partition(array, start, end, renderCounter) {
+  let pivot = array[end];
+  renderCounter.value++;
+  animatePivot(end, end, renderCounter.value);
+  let boundary = start - 1;
+  for (let i = start; i <= end; i++) {
+    renderCounter.value++;
+    animateCompare(i, i, renderCounter.value);
+    if (array[i] <= pivot) {
+      renderCounter.value++;
+      animateCompare(boundary + 1, boundary + 1, renderCounter.value);
+      renderCounter.value++;
+      animateSwap(i, boundary + 1, renderCounter.value);
+      swap(array, i, ++boundary);
+      renderCounter.value++;
+      animateCompareEnd(i, boundary, renderCounter.value);
+    } else {
+      renderCounter.value++;
+      animateCompareEnd(i, i, renderCounter.value);
     }
   }
-  return i;
+  renderCounter.value++;
+  animateCompareEnd(end, end, renderCounter.value);
+  return boundary;
+}
+
+function animatePivot(index1, index2, i) {
+  const arrayBars = document.getElementsByClassName("array-bar");
+  setTimeout(() => {
+    arrayBars[index1].style.backgroundColor = colors.pivot;
+    arrayBars[index2].style.backgroundColor = colors.pivot;
+  }, i * constants.ANIMATION_SPEED_MS);
 }
 
 function merge(array, startIndex, middle, endIndex, renderCounter) {

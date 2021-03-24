@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { bubbleSortAnimations } from "../components/sortingAlgorithms";
 import { selectionSortAnimations } from "../components/sortingAlgorithms";
 import { insertionSortAnimations } from "../components/sortingAlgorithms";
-//import { quickSortAnimations } from "../components/sortingAlgorithms";
+import { quickSortAnimations } from "../components/sortingAlgorithms";
 import { mergeSortAnimations } from "../components/sortingAlgorithms";
 import colors from "../config/colors";
 import constants from "../config/constants";
@@ -98,10 +98,6 @@ const SortIt = () => {
     const animations = insertionSortAnimations(array);
     console.log("insertion", animations);
   };
-  // const quickSort = () => {
-  //   const animations = quickSortAnimations(array, 0, array.length - 1);
-  //   console.log("quick", animations);
-  // };
 
   const mergeSort = () => {
     let renderCounter = { value: 0 };
@@ -114,6 +110,17 @@ const SortIt = () => {
     );
 
     console.log("merge", animations);
+  };
+
+  const quickSort = () => {
+    let renderCounter = { value: 0 };
+    const animations = quickSortAnimations(
+      array,
+      0,
+      array.length - 1,
+      renderCounter
+    );
+    console.log("quick", animations);
   };
 
   return (
@@ -136,23 +143,29 @@ const SortIt = () => {
         <button className="btn" onClick={() => refreshPage()}>
           Refresh Page
         </button>
+
         <button className="btn" onClick={() => resetArray()}>
           Generate New Array
         </button>
-        {/* <button className="btn" onClick={() => quickSort()}>
-          Quick Sort
-        </button> */}
-        <button className="btn" onClick={() => insertionSort()}>
-          Insertion Sort
-        </button>
-        <button className="btn" onClick={() => selectionSort()}>
-          Selection Sort
-        </button>
+
         <button className="btn" onClick={() => bubbleSort()}>
           Bubble Sort
         </button>
+
+        <button className="btn" onClick={() => selectionSort()}>
+          Selection Sort
+        </button>
+
+        <button className="btn" onClick={() => insertionSort()}>
+          Insertion Sort
+        </button>
+
         <button className="btn" onClick={() => mergeSort()}>
           Merge Sort
+        </button>
+
+        <button className="btn" onClick={() => quickSort()}>
+          Quick Sort
         </button>
       </div>
     </div>
