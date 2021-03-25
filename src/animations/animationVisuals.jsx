@@ -43,7 +43,8 @@ export function animateSwap(index1, index2, renderCounter) {
   }, renderCounter.value * constants.ANIMATION_SPEED_MS);
 }
 
-export function animateShiftCurrent(index1, current, i) {
+export function animateShiftCurrent(index1, current, renderCounter) {
+  renderCounter.value++;
   const arrayBars = document.getElementsByClassName("array-bar");
   const arrayValue = document.getElementsByClassName("array-value");
 
@@ -51,16 +52,17 @@ export function animateShiftCurrent(index1, current, i) {
     arrayValue[index1].innerHTML = current;
     arrayBars[index1].style.height = `${current}px`;
     arrayBars[index1].style.backgroundColor = colors.primary;
-  }, i * constants.ANIMATION_SPEED_MS);
+  }, renderCounter.value * constants.ANIMATION_SPEED_MS);
 }
 
-export function animateShift(index1, index2, i) {
+export function animateShift(index1, index2, renderCounter) {
+  renderCounter.value++;
   const arrayBars = document.getElementsByClassName("array-bar");
   const arrayValue = document.getElementsByClassName("array-value");
   setTimeout(() => {
     arrayValue[index2].innerHTML = arrayValue[index1].innerHTML;
     arrayBars[index2].style.height = arrayBars[index1].style.height;
-  }, i * constants.ANIMATION_SPEED_MS);
+  }, renderCounter.value * constants.ANIMATION_SPEED_MS);
 }
 
 export function animatePivot(index1, index2, i) {
