@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import { bubbleSortAnimations } from "../components/sortingAlgorithms";
+//import { bubbleSortAnimations } from "../components/sortingAlgorithms";
+import bubbleSortAnimations from "../sortingAlgorithms/bubbleSortAnimations";
 import { selectionSortAnimations } from "../components/sortingAlgorithms";
 import { insertionSortAnimations } from "../components/sortingAlgorithms";
 import { quickSortAnimations } from "../components/sortingAlgorithms";
