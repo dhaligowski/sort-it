@@ -10,9 +10,12 @@
 .btn {
   font-size: 1rem;
   margin: 25px 20px 0;
-  outline: 1px solid black;
+  /* outline: 1px solid black; */
+  border-radius: 10px;
 }
-.btn:hover {
+.btn:hover,
+.btn:active,
+.btn:focus {
   background-color: #61dafb;
 }
 
