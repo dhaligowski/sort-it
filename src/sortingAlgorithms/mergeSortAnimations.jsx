@@ -28,33 +28,33 @@ function merge(array, startIndex, middle, endIndex, renderCounter) {
   while (i < len && j < endIndex) {
     if (tmp[i] <= array[j]) {
       // animate this move
-      renderCounter.value++;
-      animateMergeCompare(k, renderCounter.value);
-      renderCounter.value++;
-      animateMerge(k, tmp[i], renderCounter.value);
-      renderCounter.value++;
-      animateMergeCompareEnd(k, renderCounter.value);
+      //renderCounter.value++;
+      animateMergeCompare(k, renderCounter);
+      //renderCounter.value++;
+      animateMerge(k, tmp[i], renderCounter);
+      // renderCounter.value++;
+      animateMergeCompareEnd(k, renderCounter);
       array[k++] = tmp[i++];
     } else {
       // animate this move
-      renderCounter.value++;
-      animateMergeCompare(k, renderCounter.value);
-      renderCounter.value++;
-      animateMerge(k, array[j], renderCounter.value);
-      renderCounter.value++;
-      animateMergeCompareEnd(k, renderCounter.value);
+      //renderCounter.value++;
+      animateMergeCompare(k, renderCounter);
+      //renderCounter.value++;
+      animateMerge(k, array[j], renderCounter);
+      //renderCounter.value++;
+      animateMergeCompareEnd(k, renderCounter);
       array[k++] = array[j++];
     }
   }
   // copy the remaining elements
   while (i < len) {
     // animate this move
-    renderCounter.value++;
-    animateMergeCompare(k, renderCounter.value);
-    renderCounter.value++;
-    animateMerge(k, tmp[i], renderCounter.value);
-    renderCounter.value++;
-    animateMergeCompareEnd(k, renderCounter.value);
+    //renderCounter.value++;
+    animateMergeCompare(k, renderCounter);
+    //renderCounter.value++;
+    animateMerge(k, tmp[i], renderCounter);
+    //renderCounter.value++;
+    animateMergeCompareEnd(k, renderCounter);
     array[k++] = tmp[i++];
   }
   return array;
