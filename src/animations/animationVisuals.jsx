@@ -1,20 +1,22 @@
 import colors from "../config/colors";
 import constants from "../config/constants";
 
-export function animateCompare(index1, index2, i) {
+export function animateCompare(index1, index2, renderCounter) {
+  renderCounter.value++;
   const arrayBars = document.getElementsByClassName("array-bar");
   setTimeout(() => {
     arrayBars[index1].style.backgroundColor = colors.secondary;
     arrayBars[index2].style.backgroundColor = colors.secondary;
-  }, i * constants.ANIMATION_SPEED_MS);
+  }, renderCounter.value * constants.ANIMATION_SPEED_MS);
 }
 
-export function animateCompareEnd(index1, index2, i) {
+export function animateCompareEnd(index1, index2, renderCounter) {
+  renderCounter.value++;
   const arrayBars = document.getElementsByClassName("array-bar");
   setTimeout(() => {
     arrayBars[index1].style.backgroundColor = colors.primary;
     arrayBars[index2].style.backgroundColor = colors.primary;
-  }, i * constants.ANIMATION_SPEED_MS);
+  }, renderCounter.value * constants.ANIMATION_SPEED_MS);
 }
 
 export function swap(array, index1, index2, i) {
@@ -23,7 +25,8 @@ export function swap(array, index1, index2, i) {
   array[index2] = temp;
 }
 
-export function animateSwap(index1, index2, i) {
+export function animateSwap(index1, index2, renderCounter) {
+  renderCounter.value++;
   const arrayBars = document.getElementsByClassName("array-bar");
   const arrayValue = document.getElementsByClassName("array-value");
 
@@ -37,7 +40,7 @@ export function animateSwap(index1, index2, i) {
     arrayBars[index2].style.height = tempStyle;
 
     arrayBars[index1].style.backgroundColor = colors.primary;
-  }, i * constants.ANIMATION_SPEED_MS);
+  }, renderCounter.value * constants.ANIMATION_SPEED_MS);
 }
 
 export function animateShiftCurrent(index1, current, i) {
