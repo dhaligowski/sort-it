@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-//import { bubbleSortAnimations } from "../components/sortingAlgorithms";
 import bubbleSortAnimations from "../sortingAlgorithms/bubbleSortAnimations";
-//import { selectionSortAnimations } from "../components/sortingAlgorithms";
 import selectionSortAnimations from "../sortingAlgorithms/selectionSortAnimations";
-//import { insertionSortAnimations } from "../components/sortingAlgorithms";
 import insertionSortAnimations from "../sortingAlgorithms/insertionSortAnimations";
-//import { quickSortAnimations } from "../components/sortingAlgorithms";
-//import { mergeSortAnimations } from "../components/sortingAlgorithms";
 import mergeSortAnimations from "../sortingAlgorithms/mergeSortAnimations";
 import quickSortAnimations from "../sortingAlgorithms/quickSortAnimations";
 import colors from "../config/colors";
