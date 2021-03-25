@@ -12,6 +12,7 @@
   margin: 25px 20px 0;
   /* outline: 1px solid black; */
   border-radius: 10px;
+  font-weight: bold;
 }
 .btn:hover,
 .btn:active,
