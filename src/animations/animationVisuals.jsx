@@ -65,34 +65,37 @@ export function animateShift(index1, index2, renderCounter) {
   }, renderCounter.value * constants.ANIMATION_SPEED_MS);
 }
 
-export function animatePivot(index1, index2, i) {
+export function animatePivot(index1, index2, renderCounter) {
+  renderCounter.value++;
   const arrayBars = document.getElementsByClassName("array-bar");
   setTimeout(() => {
     arrayBars[index1].style.backgroundColor = colors.pivot;
     arrayBars[index2].style.backgroundColor = colors.pivot;
-  }, i * constants.ANIMATION_SPEED_MS);
+  }, renderCounter.value * constants.ANIMATION_SPEED_MS);
 }
 
 export function animateMerge(index1, value, renderCounter) {
-  console.log("animateValue", index1, value, renderCounter);
+  renderCounter.value++;
   const arrayBars = document.getElementsByClassName("array-bar");
   const arrayValue = document.getElementsByClassName("array-value");
   setTimeout(() => {
     arrayValue[index1].innerHTML = value;
     arrayBars[index1].style.height = `${value}px`;
-  }, renderCounter * constants.ANIMATION_SPEED_MS);
+  }, renderCounter.value * constants.ANIMATION_SPEED_MS);
 }
 
-export function animateMergeCompare(index1, i) {
+export function animateMergeCompare(index1, renderCounter) {
+  renderCounter.value++;
   const arrayBars = document.getElementsByClassName("array-bar");
   setTimeout(() => {
     arrayBars[index1].style.backgroundColor = colors.secondary;
-  }, i * constants.ANIMATION_SPEED_MS);
+  }, renderCounter.value * constants.ANIMATION_SPEED_MS);
 }
 
-export function animateMergeCompareEnd(index1, i) {
+export function animateMergeCompareEnd(index1, renderCounter) {
+  renderCounter.value++;
   const arrayBars = document.getElementsByClassName("array-bar");
   setTimeout(() => {
     arrayBars[index1].style.backgroundColor = colors.primary;
-  }, i * constants.ANIMATION_SPEED_MS);
+  }, renderCounter.value * constants.ANIMATION_SPEED_MS);
 }
