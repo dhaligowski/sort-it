@@ -16,27 +16,20 @@ const quickSortAnimations = (array, start, end, renderCounter) => {
 
 function partition(array, start, end, renderCounter) {
   let pivot = array[end];
-  renderCounter.value++;
-  animatePivot(end, end, renderCounter.value);
+  animatePivot(end, end, renderCounter);
   let boundary = start - 1;
   for (let i = start; i <= end; i++) {
-    renderCounter.value++;
-    animateCompare(i, i, renderCounter.value);
+    animateCompare(i, i, renderCounter);
     if (array[i] <= pivot) {
-      renderCounter.value++;
-      animateCompare(boundary + 1, boundary + 1, renderCounter.value);
-      renderCounter.value++;
-      animateSwap(i, boundary + 1, renderCounter.value);
+      animateCompare(boundary + 1, boundary + 1, renderCounter);
+      animateSwap(i, boundary + 1, renderCounter);
       swap(array, i, ++boundary);
-      renderCounter.value++;
-      animateCompareEnd(i, boundary, renderCounter.value);
+      animateCompareEnd(i, boundary, renderCounter);
     } else {
-      renderCounter.value++;
-      animateCompareEnd(i, i, renderCounter.value);
+      animateCompareEnd(i, i, renderCounter);
     }
   }
-  renderCounter.value++;
-  animateCompareEnd(end, end, renderCounter.value);
+  animateCompareEnd(end, end, renderCounter);
   return boundary;
 }
 export default quickSortAnimations;
