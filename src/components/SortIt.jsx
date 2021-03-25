@@ -57,25 +57,6 @@ const SortIt = () => {
   };
   //////////////////////////////////////////////////////////////////////////
 
-  /////////////// no window width response/////////////////////////
-  // useEffect(() => {
-  //   //resetArray();
-  //   const bars = [];
-  //   for (let i = 0; i < constants.NUMBER_OF_ARRAY_BARS; i++) {
-  //     bars.push(randomIntFromInterval(1, 500));
-  //   }
-  //   setArray(bars);
-  // }, []);
-
-  // const resetArray = () => {
-  //   const bars = [];
-  //   for (let i = 0; i < constants.NUMBER_OF_ARRAY_BARS; i++) {
-  //     bars.push(randomIntFromInterval(1, 500));
-  //   }
-  //   setArray(bars);
-  // };
-  ///////////////////////////////////////////////////////////////////////////////////////////
-
   // From https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
   function randomIntFromInterval(min, max) {
     // min and max included
@@ -87,40 +68,27 @@ const SortIt = () => {
   };
 
   const bubbleSort = () => {
-    const animations = bubbleSortAnimations(array);
-    console.log("bubbleSort", animations);
+    let renderCounter = { value: 0 };
+    bubbleSortAnimations(array, renderCounter);
   };
   const selectionSort = () => {
-    const animations = selectionSortAnimations(array);
-    console.log("selSort", animations);
+    let renderCounter = { value: 0 };
+    selectionSortAnimations(array, renderCounter);
   };
   const insertionSort = () => {
-    const animations = insertionSortAnimations(array);
-    console.log("insertion", animations);
+    let renderCounter = { value: 0 };
+    insertionSortAnimations(array, renderCounter);
   };
 
   const mergeSort = () => {
     let renderCounter = { value: 0 };
 
-    const animations = mergeSortAnimations(
-      array,
-      0,
-      array.length,
-      renderCounter
-    );
-
-    console.log("merge", animations);
+    mergeSortAnimations(array, 0, array.length, renderCounter);
   };
 
   const quickSort = () => {
     let renderCounter = { value: 0 };
-    const animations = quickSortAnimations(
-      array,
-      0,
-      array.length - 1,
-      renderCounter
-    );
-    console.log("quick", animations);
+    quickSortAnimations(array, 0, array.length - 1, renderCounter);
   };
 
   return (
@@ -169,10 +137,6 @@ const SortIt = () => {
         </button>
       </div>
     </div>
-
-    // <div>
-    //   <h1>Hello World</h1>
-    // </div>
   );
 };
 
