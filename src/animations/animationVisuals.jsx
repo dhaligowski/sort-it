@@ -19,7 +19,7 @@ export function animateCompareEnd(index1, index2, renderCounter) {
   }, renderCounter.value * constants.ANIMATION_SPEED_MS);
 }
 
-export function swap(array, index1, index2, i) {
+export function swap(array, index1, index2) {
   var temp = array[index1];
   array[index1] = array[index2];
   array[index2] = temp;
@@ -43,6 +43,7 @@ export function animateSwap(index1, index2, renderCounter) {
   }, renderCounter.value * constants.ANIMATION_SPEED_MS);
 }
 
+//insertion sort
 export function animateShiftCurrent(index1, current, renderCounter) {
   renderCounter.value++;
   const arrayBars = document.getElementsByClassName("array-bar");
@@ -55,6 +56,7 @@ export function animateShiftCurrent(index1, current, renderCounter) {
   }, renderCounter.value * constants.ANIMATION_SPEED_MS);
 }
 
+//insertion sort
 export function animateShift(index1, index2, renderCounter) {
   renderCounter.value++;
   const arrayBars = document.getElementsByClassName("array-bar");
@@ -65,6 +67,7 @@ export function animateShift(index1, index2, renderCounter) {
   }, renderCounter.value * constants.ANIMATION_SPEED_MS);
 }
 
+//quick sort
 export function animatePivot(index1, index2, renderCounter) {
   renderCounter.value++;
   const arrayBars = document.getElementsByClassName("array-bar");
@@ -74,6 +77,7 @@ export function animatePivot(index1, index2, renderCounter) {
   }, renderCounter.value * constants.ANIMATION_SPEED_MS);
 }
 
+//merge sort
 export function animateMerge(index1, value, renderCounter) {
   renderCounter.value++;
   const arrayBars = document.getElementsByClassName("array-bar");
@@ -84,6 +88,7 @@ export function animateMerge(index1, value, renderCounter) {
   }, renderCounter.value * constants.ANIMATION_SPEED_MS);
 }
 
+//merge sort
 export function animateMergeCompare(index1, renderCounter) {
   renderCounter.value++;
   const arrayBars = document.getElementsByClassName("array-bar");
@@ -92,6 +97,7 @@ export function animateMergeCompare(index1, renderCounter) {
   }, renderCounter.value * constants.ANIMATION_SPEED_MS);
 }
 
+//merge sort
 export function animateMergeCompareEnd(index1, renderCounter) {
   renderCounter.value++;
   const arrayBars = document.getElementsByClassName("array-bar");
