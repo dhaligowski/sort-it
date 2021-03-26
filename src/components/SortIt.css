@@ -10,9 +10,11 @@
 .btn {
   font-size: 1rem;
   margin: 25px 20px 0;
-  /* outline: 1px solid black; */
-  border-radius: 10px;
+  border-radius: 20px;
+  border-width: thin;
   font-weight: bold;
+  padding: 5px 10px;
+  outline: none;
 }
 .btn:hover,
 .btn:active,
