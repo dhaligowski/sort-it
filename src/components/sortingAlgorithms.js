@@ -249,7 +249,6 @@ export const mergeSortAnimations = (
 };
 
 function animateMerge(index1, value, renderCounter) {
-  console.log("animateValue", index1, value, renderCounter);
   const arrayBars = document.getElementsByClassName("array-bar");
   const arrayValue = document.getElementsByClassName("array-value");
   setTimeout(() => {
