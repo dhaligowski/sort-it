@@ -9,13 +9,13 @@ const insertionSortAnimations = (array, renderCounter) => {
     let j = i - 1;
     while (j >= 0 && array[j] > current) {
       animateCompare(j, j + 1, renderCounter);
-      array[j + 1] = array[j]; //shift  greater value
+      array[j + 1] = array[j];
       animateShift(j, j + 1, renderCounter);
       animateCompareEnd(j, j + 1, renderCounter);
-      j = j - 1; //decrement j to see if < or at zero
+      j = j - 1;
     }
-    animateCompare(j + 1, j + 1, renderCounter); //
-    array[j + 1] = current; //save current in new home
+    animateCompare(j + 1, j + 1, renderCounter);
+    array[j + 1] = current;
     animateShiftCurrent(j + 1, current, renderCounter);
   }
   return array;
