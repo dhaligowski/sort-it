@@ -2,7 +2,7 @@
   /* chage the width to alter bar */
   width: 25px;
   display: inline-block;
-  margin: 5px 2px;
+  margin: 0 2px;
 }
 .array-value {
   font-weight: bold;
@@ -23,5 +23,5 @@
 }
 
 .array-block {
-  min-height: 510px;
+  min-height: 505px;
 }
